@@ -1,0 +1,31 @@
+{
+  "dataset": "manaca-jaster",
+  "tasks": {
+    "assin2_sts": 6500,
+    "assin2_nli": 6500,
+    "sick_br_nli": 4439,
+    "faquad": 837,
+    "enem": 1432,
+    "harem": 121,
+    "lener_br": 7827,
+    "tweetsentbr": 2010,
+    "hatebr": 4480,
+    "pira": 1806
+  },
+  "total": 35952,
+  "shuffled": true,
+  "seed": 42,
+  "sha256": {
+    "assin2_sts": "5a6314e80755d511c277efbb10e3a763a05dd0b064b337a066037408a260a021",
+    "assin2_nli": "2aa45c1bb054aa0efa9a6050a32228c196e8c0269af35fdf59ebeaad3d03af03",
+    "sick_br_nli": "d8afaef5c7df3cd66a041933aa907ed87fcc15a87821bde03ef32fbdc9f5adae",
+    "faquad": "22e72a5bbde095c8c5e7f018faa93dcf64eb26498bc835c93d7caf19e5dd68d8",
+    "enem": "9b9eec358625303dd39661ba6d22a37e4c63569190443683385297bdedc3e3f2",
+    "harem": "10e37f9f5201b4ccfc249621bd81a5594893092879b5ce5f8fff4ccf1245d620",
+    "lener_br": "7d544b7bdf4cee107f30a8eecc5652e5874470ea2901cd6e65c3853b81822c8f",
+    "tweetsentbr": "bece24fa2e5a4b3ad40f43a11833bd7e10d39ebcf9b09899010a02e97c165386",
+    "hatebr": "2d2fa478b0c933e420263fadd8517afeb2e5505a942e05a7b482b59fcf1b81cd",
+    "pira": "6e7e6029ef1cd6909789a334bd550e3a3014d02402289712f67df2b87909a88a",
+    "manaca_jaster.jsonl": "c5a98ca3c164b2e757d9d56728e5fc94bf079b8801ac630bdf87bc4c7fce8703"
+  }
+}

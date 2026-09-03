@@ -1,0 +1,16 @@
+{
+  "sources": {
+    "alpaca": 51747,
+    "aya": 8809,
+    "oasst": 315,
+    "translation": 38754,
+    "summarization": 4218,
+    "manaca_jaster": 37561
+  },
+  "total": 141404,
+  "shuffled": true,
+  "seed": 42,
+  "dedup": true,
+  "max_chars": 5000,
+  "max_per_source": 0
+}

@@ -1,0 +1,11 @@
+{
+  "sources": {
+    "alpaca": 51747,
+    "oasst": 0,
+    "manaca_jaster": 34145
+  },
+  "total": 85892,
+  "shuffled": true,
+  "seed": 42,
+  "dedup": true
+}
