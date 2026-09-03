@@ -1,0 +1,9 @@
+Manaca sft — proveniencia do run
+Timestamp:  20260901_015913
+Git:        37491b7 (master)
+Imagem:     manaca-posttrain:latest
+GPUs:       2
+Accelerate: configs/accelerate_config_zero3.yaml
+Port:       29783
+Script:     sft/train.py
+Args:       --model_name_or_path menezesbruno/manaca-1b-base --data_files data/sft_v2/manaca_sft.jsonl --full_finetuning --gradient_accumulation_steps 128 --output_dir /workspace/checkpoints/manaca-1b-instruct-v2-full
