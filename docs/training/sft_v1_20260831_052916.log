@@ -1,0 +1,80 @@
+# Log de treino do SFT v1 (curva de loss + status). NOTA: os avisos do trl que
+# ecoavam INSTANCIAS de treino longas (com possivel PII do corpus) foram REMOVIDOS
+# desta versao publica; o log bruto fica so na HPC. Ver docs/training/README.md.
+# ---------------------------------------------------------------------------
+[sft] exemplos de treino | training examples: 85,892
+[sft] exemplos de treino | training examples: 85,892
+[sft] Full fine-tuning (LR 1e-05, 2.0 épocas) — use accelerate + ZeRO-3 (configs/accelerate_config_zero3.yaml)
+[sft] checagem do collator OK: 50 tokens mascarados (prompt), 10 com loss (resposta).
+[sft] Full fine-tuning (LR 1e-05, 2.0 épocas) — use accelerate + ZeRO-3 (configs/accelerate_config_zero3.yaml)
+[sft] checagem do collator OK: 50 tokens mascarados (prompt), 10 com loss (resposta).
+{'loss': 2.6198, 'grad_norm': 0.08655766713173875, 'learning_rate': 1.4925373134328358e-06, 'epoch': 0.03}
+{'loss': 2.3792, 'grad_norm': 0.03916378228376551, 'learning_rate': 2.9850746268656716e-06, 'epoch': 0.06}
+{'loss': 2.1399, 'grad_norm': 0.0211949037440785, 'learning_rate': 4.477611940298508e-06, 'epoch': 0.09}
+{'loss': 2.0168, 'grad_norm': 0.016477584328647186, 'learning_rate': 5.970149253731343e-06, 'epoch': 0.12}
+{'loss': 1.9651, 'grad_norm': 0.013971033953628927, 'learning_rate': 7.46268656716418e-06, 'epoch': 0.15}
+{'loss': 1.934, 'grad_norm': 0.010434757274708327, 'learning_rate': 8.955223880597016e-06, 'epoch': 0.18}
+{'loss': 1.881, 'grad_norm': 0.010074550819413976, 'learning_rate': 9.999389284703265e-06, 'epoch': 0.21}
+{'loss': 1.8766, 'grad_norm': 0.011456551106341575, 'learning_rate': 9.988536273658876e-06, 'epoch': 0.24}
+{'loss': 1.8642, 'grad_norm': 0.010132082956897694, 'learning_rate': 9.964145714351633e-06, 'epoch': 0.27}
+{'loss': 1.8748, 'grad_norm': 0.010414543387328591, 'learning_rate': 9.926283796211796e-06, 'epoch': 0.3}
+{'loss': 1.8448, 'grad_norm': 0.010128690681194902, 'learning_rate': 9.87505326632108e-06, 'epoch': 0.33}
+{'loss': 1.8278, 'grad_norm': 0.0094122731660061, 'learning_rate': 9.810593150584658e-06, 'epoch': 0.36}
+{'loss': 1.8192, 'grad_norm': 0.010700073999062847, 'learning_rate': 9.733078376452172e-06, 'epoch': 0.39}
+{'loss': 1.8541, 'grad_norm': 0.009728185640822591, 'learning_rate': 9.642719298211602e-06, 'epoch': 0.42}
+{'loss': 1.8254, 'grad_norm': 0.009818672694848778, 'learning_rate': 9.539761126144193e-06, 'epoch': 0.45}
+{'loss': 1.837, 'grad_norm': 0.011053302032212518, 'learning_rate': 9.424483261089584e-06, 'epoch': 0.48}
+{'loss': 1.7991, 'grad_norm': 0.009256502615061809, 'learning_rate': 9.297198536226927e-06, 'epoch': 0.51}
+{'loss': 1.8155, 'grad_norm': 0.010121812020015887, 'learning_rate': 9.158252368129628e-06, 'epoch': 0.54}
+{'loss': 1.7933, 'grad_norm': 0.010351759813684256, 'learning_rate': 9.008021819397488e-06, 'epoch': 0.57}
+{'loss': 1.7933, 'grad_norm': 0.010809697892658324, 'learning_rate': 8.846914575410035e-06, 'epoch': 0.6}
+{'loss': 1.7915, 'grad_norm': 0.010383867556575232, 'learning_rate': 8.675367837977848e-06, 'epoch': 0.63}
+{'loss': 1.7778, 'grad_norm': 0.009447990809199926, 'learning_rate': 8.49384713889421e-06, 'epoch': 0.66}
+{'loss': 1.7773, 'grad_norm': 0.009903753122949607, 'learning_rate': 8.302845076606786e-06, 'epoch': 0.69}
+{'loss': 1.7996, 'grad_norm': 0.010049101773676539, 'learning_rate': 8.10287997943769e-06, 'epoch': 0.72}
+{'loss': 1.8051, 'grad_norm': 0.009897694065910765, 'learning_rate': 7.894494498979558e-06, 'epoch': 0.75}
+{'loss': 1.7437, 'grad_norm': 0.009868885373416554, 'learning_rate': 7.678254137484797e-06, 'epoch': 0.77}
+{'loss': 1.7473, 'grad_norm': 0.009948556353411284, 'learning_rate': 7.4547457132442895e-06, 'epoch': 0.8}
+{'loss': 1.7807, 'grad_norm': 0.010754952986976063, 'learning_rate': 7.2245757681200835e-06, 'epoch': 0.83}
+{'loss': 1.7493, 'grad_norm': 0.01119421349796473, 'learning_rate': 6.988368921553601e-06, 'epoch': 0.86}
+{'loss': 1.766, 'grad_norm': 0.010434750429159778, 'learning_rate': 6.746766175516159e-06, 'epoch': 0.89}
+{'loss': 1.7536, 'grad_norm': 0.010532799665312783, 'learning_rate': 6.500423175001705e-06, 'epoch': 0.92}
+{'loss': 1.7529, 'grad_norm': 0.010378341996533702, 'learning_rate': 6.2500084287822925e-06, 'epoch': 0.95}
+{'loss': 1.7345, 'grad_norm': 0.010831124910651845, 'learning_rate': 5.996201495254757e-06, 'epoch': 0.98}
+{'loss': 1.8061, 'grad_norm': 0.009695287289822893, 'learning_rate': 5.73969113830165e-06, 'epoch': 1.01}
+{'loss': 1.6438, 'grad_norm': 0.010348962522957465, 'learning_rate': 5.481173458170952e-06, 'epoch': 1.04}
+{'loss': 1.6209, 'grad_norm': 0.009756909976923469, 'learning_rate': 5.221350002446882e-06, 'epoch': 1.07}
+{'loss': 1.6299, 'grad_norm': 0.010359813699603286, 'learning_rate': 4.96092586223808e-06, 'epoch': 1.1}
+{'loss': 1.643, 'grad_norm': 0.009680484905509622, 'learning_rate': 4.700607758749626e-06, 'epoch': 1.13}
+{'loss': 1.6193, 'grad_norm': 0.009623388437419216, 'learning_rate': 4.441102125431398e-06, 'epoch': 1.16}
+{'loss': 1.6122, 'grad_norm': 0.010108434739278221, 'learning_rate': 4.183113190907349e-06, 'epoch': 1.19}
+{'loss': 1.6323, 'grad_norm': 0.010354584290245288, 'learning_rate': 3.927341067888065e-06, 'epoch': 1.22}
+{'loss': 1.6246, 'grad_norm': 0.010238267456750721, 'learning_rate': 3.6744798532528137e-06, 'epoch': 1.25}
+{'loss': 1.6144, 'grad_norm': 0.010191349114185603, 'learning_rate': 3.4252157444569478e-06, 'epoch': 1.28}
+{'loss': 1.6128, 'grad_norm': 0.009375450550049423, 'learning_rate': 3.1802251773762294e-06, 'epoch': 1.31}
+{'loss': 1.599, 'grad_norm': 0.010295943818172738, 'learning_rate': 2.9401729906414385e-06, 'epoch': 1.34}
+{'loss': 1.6222, 'grad_norm': 0.01009788763173414, 'learning_rate': 2.7057106214448216e-06, 'epoch': 1.37}
+{'loss': 1.6255, 'grad_norm': 0.010575202805609658, 'learning_rate': 2.4774743377144265e-06, 'epoch': 1.4}
+{'loss': 1.5915, 'grad_norm': 0.010058783947177168, 'learning_rate': 2.256083511453747e-06, 'epoch': 1.43}
+{'loss': 1.6289, 'grad_norm': 0.01035680411395969, 'learning_rate': 2.042138937932388e-06, 'epoch': 1.46}
+{'loss': 1.6041, 'grad_norm': 0.010605657309587263, 'learning_rate': 1.8362212052889827e-06, 'epoch': 1.49}
+{'loss': 1.6049, 'grad_norm': 0.010399617266520663, 'learning_rate': 1.63888911897084e-06, 'epoch': 1.52}
+{'loss': 1.6305, 'grad_norm': 0.010228641656048077, 'learning_rate': 1.4506781852859836e-06, 'epoch': 1.55}
+{'loss': 1.6271, 'grad_norm': 0.010723346922785152, 'learning_rate': 1.2720991581827852e-06, 'epoch': 1.58}
+{'loss': 1.6139, 'grad_norm': 0.010010149906957462, 'learning_rate': 1.1036366532008552e-06, 'epoch': 1.61}
+{'loss': 1.6367, 'grad_norm': 0.01033046519332075, 'learning_rate': 9.457478323545749e-07, 'epoch': 1.64}
+{'loss': 1.6184, 'grad_norm': 0.010423556323712618, 'learning_rate': 7.988611635181099e-07, 'epoch': 1.67}
+{'loss': 1.6148, 'grad_norm': 0.010246912432903214, 'learning_rate': 6.633752576786251e-07, 'epoch': 1.7}
+{'loss': 1.6151, 'grad_norm': 0.009317435953162222, 'learning_rate': 5.396577872130676e-07, 'epoch': 1.73}
+{'loss': 1.628, 'grad_norm': 0.010618740334869245, 'learning_rate': 4.2804448812404754e-07, 'epoch': 1.76}
+{'loss': 1.6406, 'grad_norm': 0.009893943349761318, 'learning_rate': 3.288382489424502e-07, 'epoch': 1.79}
+{'loss': 1.6283, 'grad_norm': 0.010657797136574514, 'learning_rate': 2.4230828876927293e-07, 'epoch': 1.82}
+{'loss': 1.5989, 'grad_norm': 0.01052501562935398, 'learning_rate': 1.6868942668726408e-07, 'epoch': 1.85}
+{'loss': 1.6058, 'grad_norm': 0.00991467037293835, 'learning_rate': 1.0818144452496293e-07, 'epoch': 1.88}
+{'loss': 1.6169, 'grad_norm': 0.010275856588019246, 'learning_rate': 6.094854470245326e-08, 'epoch': 1.91}
+{'loss': 1.5939, 'grad_norm': 0.009582590373985957, 'learning_rate': 2.711890463007405e-08, 'epoch': 1.94}
+{'loss': 1.6278, 'grad_norm': 0.010230246582146912, 'learning_rate': 6.784328869339218e-09, 'epoch': 1.97}
+{'loss': 1.636, 'grad_norm': 0.01061769969904099, 'learning_rate': 0.0, 'epoch': 2.0}
+{'train_runtime': 61588.4566, 'train_samples_per_second': 2.789, 'train_steps_per_second': 0.011, 'train_loss': 1.7463916821266288, 'epoch': 2.0}
+[sft] concluído | done -> /workspace/checkpoints/manaca-1b-instruct-full
+[sft] concluído | done -> /workspace/checkpoints/manaca-1b-instruct-full
