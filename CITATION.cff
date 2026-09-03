@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use Manacá-1B-Instruct, please cite the preprint below."
+title: "Manacá-1B-Instruct: An Open, Auditable Instruction-Tuned Brazilian-Portuguese Language Model, with a Negative Result on DPO and a Safety-SFT Alignment"
+abstract: >-
+  Manacá-1B-Instruct is the instruction-tuned version of the Manacá-1B base model
+  (~1.72B parameters, Brazilian Portuguese). This repository releases, in an
+  auditable and reproducible way, the whole post-training path to the safe
+  instruct: the SFT corpus and code (v1 and v2), the training logs, the
+  comparative evaluation against other PT-BR instruct models, and the safety
+  alignment. It documents a negative result (on-policy DPO did not change free
+  generation) and the adopted method (an AnswerCarefully-style safety-SFT), so
+  that every reported number can be recomputed.
+type: software
+authors:
+  - family-names: "Santos Menezes"
+    given-names: "Bruno Leonardo"
+    affiliation: "Laboratório Nacional de Computação Científica (LNCC)"
+    email: "brunolsm@lncc.br"
+  - family-names: "Souza Cardoso"
+    given-names: "Carlos Leonardo"
+    affiliation: "Laboratório Nacional de Computação Científica (LNCC)"
+    email: "cardoso@lncc.br"
+  - family-names: "Machado Porto"
+    given-names: "Fabio André"
+    affiliation: "Laboratório Nacional de Computação Científica (LNCC)"
+    email: "fporto@lncc.br"
+license: CC-BY-4.0
+repository-code: "https://github.com/brunoleomenezes/manaca-1b-instruct"
+keywords:
+  - large language model
+  - brazilian portuguese
+  - instruction tuning
+  - safety alignment
+  - reproducibility
+  - evaluation
+year: 2026

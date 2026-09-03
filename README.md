@@ -126,6 +126,10 @@ SentencePiece 64k `nmt_nfkc_cf`). O pós-treino é um ajuste por cima desses pes
 
 ### Como reproduzir
 
+**Runbook ponta-a-ponta (o caminho todo em ordem):** [`REPRODUCE.md`](REPRODUCE.md).
+Para conversar com o modelo final (template Alpaca-PT): `./scripts/run_chat.sh`
+([`scripts/chat.py`](scripts/chat.py)).
+
 Já disponível neste repositório (o que funcionou e valeu, sem tentativas falhas):
 
 - **Corpus de SFT (v1 e v2)** — fontes, splits, licenças e comandos:
@@ -292,6 +296,10 @@ It fully inherits the architecture of the [Manacá-1B base](https://github.com/I
 | Precision | bfloat16 |
 
 ### How to reproduce
+
+**End-to-end runbook (the whole path in order):** [`REPRODUCE.md`](REPRODUCE.md).
+To chat with the final model (Alpaca-PT template): `./scripts/run_chat.sh`
+([`scripts/chat.py`](scripts/chat.py)).
 
 Already in this repository (what worked and mattered, no failed attempts):
 
