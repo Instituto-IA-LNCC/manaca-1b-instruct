@@ -1,0 +1,9 @@
+Manaca sft — proveniencia do run
+Timestamp:  20260903_095609
+Git:        3cc30dc (master)
+Imagem:     manaca-posttrain:latest
+GPUs:       2
+Accelerate: configs/accelerate_config_ddp.yaml
+Port:       29507
+Script:     sft/train.py
+Args:       --model_name_or_path /workspace/checkpoints/manaca-1b-instruct-v2-full --data_files sft_safety/safety_sft.jsonl --output_dir /workspace/checkpoints/manaca-1b-instruct-v2-safe --lora_r 32 --lora_alpha 64 --num_train_epochs 3 --learning_rate 1e-4 --gradient_accumulation_steps 8 --save_steps 200 --num_train_epochs 3 --output_dir /workspace/checkpoints/manaca-1b-instruct-v2-safe3
