@@ -1,0 +1,14 @@
+task: assin2_rte_pt
+dataset_path: assin2
+test_split: test
+fewshot_split: train
+output_type: multiple_choice
+doc_to_text: "Premissa: {{premise}}\nHipótese: {{hypothesis}}\nA hipótese é uma consequência lógica da premissa? Responda com Sim ou Não.\nResposta:"
+doc_to_choice: ["Não", "Sim"]
+doc_to_target: "{{entailment_judgment}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0

@@ -1,0 +1,15 @@
+task: bluex_pt
+dataset_path: eduagarcia-temp/BLUEX_without_images
+test_split: train
+fewshot_split: train
+output_type: multiple_choice
+process_docs: !function pt_utils.prep_exame
+doc_to_text: "{{query}}"
+doc_to_choice: "{{choices_label}}"
+doc_to_target: "{{gold}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0

@@ -1,0 +1,14 @@
+task: faquad_nli_pt
+dataset_path: ruanchaves/faquad-nli
+test_split: test
+fewshot_split: train
+output_type: multiple_choice
+doc_to_text: "Pergunta: {{question}}\nResposta: {{answer}}\nA resposta e adequada para a pergunta? Responda com Sim ou Não.\nResposta:"
+doc_to_choice: ["Não", "Sim"]
+doc_to_target: "{{label}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0

@@ -115,6 +115,9 @@ Já disponível neste repositório (o que funcionou e valeu, sem tentativas falh
 - **Treino do instruct v1 e v2** — [`sft/README.md`](sft/README.md) e o treinador
   [`sft/train.py`](sft/train.py); ambiente em [`docker/`](docker/) + `docker-compose.yml`.
 - **Logs das corridas que produziram os modelos** — [`docs/training/`](docs/training/).
+- **Avaliação comparativa (instructs)** — [`docs/evaluation/instruct-eval-pt.md`](docs/evaluation/instruct-eval-pt.md);
+  harness em [`bench/`](bench/) e [`scripts/eval/`](scripts/eval/), com as saídas
+  cruas e as notas do juiz versionadas.
 
 O alinhamento de segurança (safety-SFT) que produziu o instruct **safe** entra em
 seguida. A base (pré-treino e avaliação) fica em
@@ -256,6 +259,9 @@ Already in this repository (what worked and mattered, no failed attempts):
 - **Instruct v1 and v2 training** — [`sft/README.md`](sft/README.md) and the trainer
   [`sft/train.py`](sft/train.py); environment in [`docker/`](docker/) + `docker-compose.yml`.
 - **Logs of the runs that produced the models** — [`docs/training/`](docs/training/).
+- **Comparative evaluation (instructs)** — [`docs/evaluation/instruct-eval-pt.md`](docs/evaluation/instruct-eval-pt.md);
+  harness in [`bench/`](bench/) and [`scripts/eval/`](scripts/eval/), with raw model
+  outputs and judge scores versioned.
 
 The safety alignment (safety-SFT) that produced the **safe** instruct comes next.
 The base (pretraining and evaluation) lives in

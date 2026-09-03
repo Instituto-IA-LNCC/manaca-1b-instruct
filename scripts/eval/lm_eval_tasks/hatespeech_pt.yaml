@@ -1,0 +1,14 @@
+task: hatespeech_pt
+dataset_path: hate_speech_portuguese
+test_split: train
+fewshot_split: train
+output_type: multiple_choice
+doc_to_text: "Texto: {{text}}\nEsse texto contém discurso de ódio? Responda com Sim ou Não.\nResposta:"
+doc_to_choice: ["Não", "Sim"]
+doc_to_target: "{{label}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0

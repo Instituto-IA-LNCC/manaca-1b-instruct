@@ -1,0 +1,14 @@
+task: hatebr_pt
+dataset_path: ruanchaves/hatebr
+test_split: test
+fewshot_split: train
+output_type: multiple_choice
+doc_to_text: "Comentário: {{instagram_comments}}\nEsse comentário é ofensivo? Responda com Sim ou Não.\nResposta:"
+doc_to_choice: ["Não", "Sim"]
+doc_to_target: "{{ 1 if offensive_language else 0 }}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
