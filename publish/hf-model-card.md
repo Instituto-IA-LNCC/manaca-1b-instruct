@@ -29,7 +29,7 @@ datasets:
 [![Institution: LNCC](https://img.shields.io/badge/Institution-LNCC-002776.svg)](https://www.lncc.br)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/brunoleomenezes/manaca-1b-instruct/main/assets/figures/manaca-identity.svg" width="520" alt="Manacá — Tibouchina mutabilis: os três estágios florais como metáfora do treinamento do LLM"/>
+  <img src="assets/figures/manaca-identity.svg" width="520" alt="Manacá — Tibouchina mutabilis: os três estágios florais como metáfora do treinamento do LLM"/>
 </p>
 
 *Se o base é a flor branca (pré-treino), o instruct é o estágio púrpura: o alinhamento,*
