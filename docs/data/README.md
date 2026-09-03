@@ -28,8 +28,30 @@ Alpaca `{instruction, input, output}` e gravam um `manifest.json` com as contage
 
 As contagens exatas por fonte estão nos manifestos versionados nesta pasta
 (`manifest_v1.json`, `manifest_v2.json`, `jaster_manifest_v1.json`,
-`jaster_manifest_v2.json`) e um recorte de exemplos em `sample_v1.jsonl` /
-`sample_v2.jsonl`.
+`jaster_manifest_v2.json`, com `sha256` por tarefa do jaster) e um recorte de
+exemplos em `sample_v1.jsonl` / `sample_v2.jsonl`.
+
+### Contagens reais | Actual counts (dedup + `max_chars` aplicados)
+
+| Fonte (no mix) | v1 | v2 |
+|---|--:|--:|
+| alpaca | 51.747 | 51.747 |
+| aya | — | 8.809 |
+| oasst | **0** | 315 |
+| translation (opus-100) | — | 38.754 |
+| summarization (xlsum) | — | 4.218 |
+| manacá-jaster | 34.145 | 37.561 |
+| **TOTAL** | **85.892** | **141.404** |
+
+Dois pontos honestos de auditoria (visíveis nos manifests):
+
+- **v1: OASST = 0.** O filtro de OASST da v1 exigia o idioma também no nó-pai e
+  acabou retornando **zero** exemplos — ou seja, a v1 foi, na prática, alpaca +
+  manacá-jaster. Esse foi um dos motivos do v2, que relaxou o filtro (315
+  exemplos). Registrado aqui em vez de escondido.
+- **v2: macmorpho = 0.** A tarefa `macmorpho` do jaster não carregou/ficou vazia no
+  build do v2 (as demais 11 tarefas entraram normalmente). Um dataset fora do ar
+  é pulado com aviso, sem derrubar o build.
 
 ## Fontes de instrução/conversa (`prepare_data.py`)
 
