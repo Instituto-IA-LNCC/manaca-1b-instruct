@@ -39,6 +39,8 @@ reproduzível aqui.
 **Cooperação científica LNCC × NII/LLM-jp** — Laboratório Nacional de Computação
 Científica (Brasil) × National Institute of Informatics (Japão).
 
+🤗 **Modelo Instruct no Hugging Face:** [`menezesbruno/manaca-1b-instruct`](https://huggingface.co/menezesbruno/manaca-1b-instruct)
+
 🤗 **Modelo base no Hugging Face:** [`menezesbruno/manaca-1b-base`](https://huggingface.co/menezesbruno/manaca-1b-base)
 <br>🧩 **Base (pré-treino + avaliação):** [`Instituto-IA-LNCC/manaca-1b-base`](https://github.com/Instituto-IA-LNCC/manaca-1b-base)
 
@@ -237,6 +239,8 @@ and reproducible here.
 
 **Scientific cooperation LNCC × NII/LLM-jp** — National Laboratory for Scientific
 Computing (Brazil) × National Institute of Informatics (Japan).
+
+🤗 **Instruct Model on Hugging Face:** [`menezesbruno/manaca-1b-instruct`](https://huggingface.co/menezesbruno/manaca-1b-instruct)
 
 🤗 **Base model on Hugging Face:** [`menezesbruno/manaca-1b-base`](https://huggingface.co/menezesbruno/manaca-1b-base)
 <br>🧩 **Base (pretraining + evaluation):** [`Instituto-IA-LNCC/manaca-1b-base`](https://github.com/Instituto-IA-LNCC/manaca-1b-base)
