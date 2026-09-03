@@ -43,6 +43,13 @@ exemplos em `sample_v1.jsonl` / `sample_v2.jsonl`.
 | manacá-jaster | 34.145 | 37.561 |
 | **TOTAL** | **85.892** | **141.404** |
 
+> **Onde está o "log" do build?** O build do corpus roda via `run_posttrain.sh`,
+> que imprime no terminal e **não salva um `.log`** (diferente do treino). O
+> **registro auditável do build é o `manifest.json`**: ele grava exatamente o que
+> saiu (contagens por fonte/tarefa, `dedup`/`max_chars`/`seed`, e `sha256` por
+> tarefa do jaster = conteúdo pinado). Recriar o build gera os mesmos manifests se
+> as fontes do HF não tiverem mudado.
+
 Dois pontos honestos de auditoria (visíveis nos manifests):
 
 - **v1: OASST = 0.** O filtro de OASST da v1 exigia o idioma também no nó-pai e
