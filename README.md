@@ -1,11 +1,32 @@
 # Manacá-1B-Instruct — versão instruct, aberta e auditável, do Manacá-1B<br>The Open, Auditable Instruction-Tuned Manacá-1B
 
+> **Manacá-1B-Instruct** é a versão **instruct (pós-treinada)** do
+> [**Manacá-1B base**](https://github.com/Instituto-IA-LNCC/manaca-1b-base): o mesmo
+> decoder-only de **~1,72 bilhão de parâmetros**, agora **alinhado para seguir
+> instruções e recusar pedidos nocivos com segurança**, com **todo o caminho até o
+> instruct seguro — inclusive o que não funcionou — reprodutível e auditável**.
+>
+> **Cooperação científica LNCC × NII/LLM-jp** — Laboratório Nacional de Computação
+> Científica (Brasil) × National Institute of Informatics (Japão).
+
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Model: Manacá-1B-Instruct](https://img.shields.io/badge/Model-Manac%C3%A1--1B--Instruct-8A2BE2.svg)]()
 [![Base model on Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Base-menezesbruno%2Fmanaca--1b--base-yellow.svg)](https://huggingface.co/menezesbruno/manaca-1b-base)
 [![Base repo](https://img.shields.io/badge/Base%20repo-manaca--1b--base-002776.svg)](https://github.com/Instituto-IA-LNCC/manaca-1b-base)
 [![Alignment: safety-SFT](https://img.shields.io/badge/Alignment-safety--SFT-purple.svg)](docs/evaluation/safety-alignment-pt.md)
 [![Language: PT-BR](https://img.shields.io/badge/Language-PT--BR-009c3b.svg)]()
 [![Institution: LNCC](https://img.shields.io/badge/Institution-LNCC-002776.svg)](https://www.lncc.br)
+
+```
+           branca           rosa-lilás         púrpura
+         (pré-treino)      (fine-tuning)      (alinhamento)
+              ○                 ◑                  ●   ◀ este repo · this repo
+              │                 │                  │
+              └─────────────────┴──────────────────┘
+                     Tibouchina mutabilis
+        o base é a flor branca; este repositório é a púrpura —
+              o alinhamento seguro em Português do Brasil
+```
 
 <p align="center">
   <img src="assets/figures/manaca-identity.svg" width="520" alt="Manacá — Tibouchina mutabilis: os três estágios florais como metáfora do treinamento do LLM / the three flowering colours as a metaphor for language-model maturation"/>
@@ -38,8 +59,6 @@ reproduzível aqui.
 
 **Cooperação científica LNCC × NII/LLM-jp** — Laboratório Nacional de Computação
 Científica (Brasil) × National Institute of Informatics (Japão).
-
-🤗 **Modelo Instruct no Hugging Face:** [`menezesbruno/manaca-1b-instruct`](https://huggingface.co/menezesbruno/manaca-1b-instruct)
 
 🤗 **Modelo base no Hugging Face:** [`menezesbruno/manaca-1b-base`](https://huggingface.co/menezesbruno/manaca-1b-base)
 <br>🧩 **Base (pré-treino + avaliação):** [`Instituto-IA-LNCC/manaca-1b-base`](https://github.com/Instituto-IA-LNCC/manaca-1b-base)
@@ -239,8 +258,6 @@ and reproducible here.
 
 **Scientific cooperation LNCC × NII/LLM-jp** — National Laboratory for Scientific
 Computing (Brazil) × National Institute of Informatics (Japan).
-
-🤗 **Instruct Model on Hugging Face:** [`menezesbruno/manaca-1b-instruct`](https://huggingface.co/menezesbruno/manaca-1b-instruct)
 
 🤗 **Base model on Hugging Face:** [`menezesbruno/manaca-1b-base`](https://huggingface.co/menezesbruno/manaca-1b-base)
 <br>🧩 **Base (pretraining + evaluation):** [`Instituto-IA-LNCC/manaca-1b-base`](https://github.com/Instituto-IA-LNCC/manaca-1b-base)
