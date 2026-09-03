@@ -107,10 +107,17 @@ SentencePiece 64k `nmt_nfkc_cf`). O pós-treino é um ajuste por cima desses pes
 
 ### Como reproduzir
 
-Este repositório documenta o pós-treino de forma auditável. O material será
-disponibilizado por partes (dados de recusa, contraste benigno, scripts de treino,
-sondas de avaliação e o registro completo da fronteira). A base (pré-treino e
-avaliação) fica no repositório
+Já disponível neste repositório (o que funcionou e valeu, sem tentativas falhas):
+
+- **Corpus de SFT (v1 e v2)** — fontes, splits, licenças e comandos:
+  [`docs/data/`](docs/data/) · código de extração/tratamento em
+  [`sft/prepare_data.py`](sft/prepare_data.py) e [`sft/jaster/build_jaster.py`](sft/jaster/build_jaster.py).
+- **Treino do instruct v1 e v2** — [`sft/README.md`](sft/README.md) e o treinador
+  [`sft/train.py`](sft/train.py); ambiente em [`docker/`](docker/) + `docker-compose.yml`.
+- **Logs das corridas que produziram os modelos** — [`docs/training/`](docs/training/).
+
+O alinhamento de segurança (safety-SFT) que produziu o instruct **safe** entra em
+seguida. A base (pré-treino e avaliação) fica em
 [`manaca-1b-base`](https://github.com/Instituto-IA-LNCC/manaca-1b-base).
 
 ### Segurança e limitações
@@ -241,10 +248,18 @@ It fully inherits the architecture of the [Manacá-1B base](https://github.com/I
 
 ### How to reproduce
 
-This repository documents post-training in an auditable way. The material will be
-released in parts (refusal data, benign contrast, training scripts, evaluation probes,
-and the full frontier record). The base (pretraining and evaluation) lives in the
-[`manaca-1b-base`](https://github.com/Instituto-IA-LNCC/manaca-1b-base) repository.
+Already in this repository (what worked and mattered, no failed attempts):
+
+- **SFT corpus (v1 and v2)** — sources, splits, licenses, and commands:
+  [`docs/data/`](docs/data/) · extraction/processing code in
+  [`sft/prepare_data.py`](sft/prepare_data.py) and [`sft/jaster/build_jaster.py`](sft/jaster/build_jaster.py).
+- **Instruct v1 and v2 training** — [`sft/README.md`](sft/README.md) and the trainer
+  [`sft/train.py`](sft/train.py); environment in [`docker/`](docker/) + `docker-compose.yml`.
+- **Logs of the runs that produced the models** — [`docs/training/`](docs/training/).
+
+The safety alignment (safety-SFT) that produced the **safe** instruct comes next.
+The base (pretraining and evaluation) lives in
+[`manaca-1b-base`](https://github.com/Instituto-IA-LNCC/manaca-1b-base).
 
 ### Safety & limitations
 
