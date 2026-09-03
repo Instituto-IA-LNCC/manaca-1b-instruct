@@ -1,0 +1,26 @@
+# Manacá — configuração accelerate + DeepSpeed ZeRO-3 (Fase 3: SFT/DPO)
+# Baseado em references/phase3-sft/llm-jp-sft-pipeline-analise.md §57.4.
+# `num_processes` é sobreposto em tempo de execução por `accelerate launch
+# --num_processes <GPUS_PER_NODE>` (ver scripts/docker/run_sft.sh).
+compute_environment: LOCAL_MACHINE
+debug: false
+distributed_type: DEEPSPEED
+downcast_bf16: 'no'
+machine_rank: 0
+main_training_function: main
+mixed_precision: bf16
+num_machines: 1
+num_processes: 8
+rdzv_backend: static
+same_network: true
+use_cpu: false
+deepspeed_config:
+  zero_stage: 3
+  # 'auto': herdados de SFTConfig/TrainingArguments (evita erro de mismatch com
+  # o --gradient_accumulation_steps do train.py). Ver HF Trainer + DeepSpeed.
+  gradient_accumulation_steps: auto
+  gradient_clipping: auto
+  offload_optimizer_device: none
+  offload_param_device: none
+  zero3_init_flag: true
+  zero3_save_16bit_model: true

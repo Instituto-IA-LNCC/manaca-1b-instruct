@@ -1,0 +1,33 @@
+# syntax=docker/dockerfile:1
+# =============================================================================
+# Manacá — Imagem GPU: Fase 3 (SFT + DPO com trl/accelerate/deepspeed)
+# =============================================================================
+# Substitui "module load cuda + conda activate manaca-sft + Singularity + srun"
+# (references/phase3-sft §57.5) por Docker. accelerate launch roda dentro do
+# container; multinó via variáveis MAIN_PROCESS_IP/MACHINE_RANK (ver docs).
+ARG BASE_IMAGE=nvcr.io/nvidia/pytorch:24.12-py3
+FROM ${BASE_IMAGE}
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    WORK_DIR=/workspace/manaca-corpus \
+    HF_HOME=/workspace/hf-cache \
+    CKPT_DIR=/workspace/checkpoints \
+    TOKENIZERS_PARALLELISM=false \
+    NCCL_DEBUG=WARN
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        git curl ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements/posttrain.txt /tmp/requirements/posttrain.txt
+RUN python -m pip install -r /tmp/requirements/posttrain.txt
+
+WORKDIR /workspace/manaca
+
+COPY docker/entrypoint.sh /usr/local/bin/manaca-entrypoint
+RUN chmod +x /usr/local/bin/manaca-entrypoint
+ENTRYPOINT ["/usr/local/bin/manaca-entrypoint"]
+
+CMD ["python", "-c", "import torch, trl, transformers; print('trl', trl.__version__, '| transformers', transformers.__version__, '| CUDA', torch.cuda.is_available())"]

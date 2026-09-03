@@ -1,0 +1,27 @@
+# Manacá — Dependências extras da imagem GPU de PÓS-TREINAMENTO (Fase 3: SFT + DPO)
+# ---------------------------------------------------------------------------------
+# Base NGC PyTorch fornece torch/CUDA/NCCL/FlashAttention. Pilha `trl` moderna.
+#
+# NOTA (referência: references/phase3-sft/llm-jp-sft-pipeline-analise.md §115,§281):
+# o llm-jp-sft original usava trl==0.7.4 (API TrainingArguments). A partir do trl
+# >= 0.9 a API mudou para SFTConfig/DPOConfig. Esta pilha fixa a API MODERNA — os
+# scripts de treino do Manacá devem usar SFTConfig/DPOConfig, não a API antiga.
+
+transformers==4.46.3
+trl==0.12.2
+accelerate==1.1.1
+deepspeed==0.15.4
+peft==0.13.2
+datasets==3.1.0
+sentencepiece==0.2.0
+safetensors==0.4.5
+
+# QLoRA (D3a.1: cabe em 1 GPU) e otimizadores
+bitsandbytes==0.44.1
+
+# Avaliação preliminar durante o pós-treino
+evaluate==0.4.3
+scikit-learn==1.5.2
+
+# Monitoramento
+wandb==0.18.7

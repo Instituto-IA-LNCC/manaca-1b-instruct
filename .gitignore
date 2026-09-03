@@ -1,0 +1,10 @@
+# Ambiente local e artefatos de execução (não versionar)
+.env
+data/
+hf-cache/
+checkpoints/
+__pycache__/
+*.pyc
+
+# Config accelerate gerado em runtime pelo run_sft.sh
+configs/.accelerate_*.gen.yaml

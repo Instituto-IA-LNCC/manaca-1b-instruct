@@ -1,0 +1,53 @@
+# =============================================================================
+# Manacá-1B-Instruct — imagem GPU de pós-treino (SFT). Reprodutível e auditável.
+# -----------------------------------------------------------------------------
+# Substitui "module load cuda + conda + Singularity" por Docker. O código é
+# montado no container (bind mount), editável sem reconstruir a imagem.
+#
+# Uso:
+#   cp .env.example .env            # ajuste CKPT_DIR, DATA_DIR, HF_TOKEN, GPUS_PER_NODE
+#   docker compose build posttrain  # (ou: make build-posttrain)
+# =============================================================================
+
+x-gpu-deploy: &gpu-deploy
+  resources:
+    reservations:
+      devices:
+        - driver: nvidia
+          count: all
+          capabilities: [gpu]
+
+x-common-env: &common-env
+  WORK_DIR: /workspace/manaca-corpus
+  HF_HOME: /workspace/hf-cache
+  HF_DATASETS_CACHE: /workspace/hf-cache/datasets
+  TOKENIZERS_PARALLELISM: "false"
+
+services:
+  # ── Fase 3 — SFT (trl/accelerate/deepspeed) — GPU ────────────────────────
+  posttrain:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.posttrain
+      network: host          # build usa a rede do host (resolve DNS p/ o pip)
+      args:
+        BASE_IMAGE: ${GPU_BASE_IMAGE:-nvcr.io/nvidia/pytorch:24.12-py3}
+    image: manaca-posttrain:latest
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      <<: *common-env
+      CKPT_DIR: /workspace/checkpoints
+    volumes:
+      - .:/workspace/manaca
+      - ${DATA_DIR:-./data}:/workspace/manaca-corpus
+      - ${HF_CACHE_DIR:-./hf-cache}:/workspace/hf-cache
+      - ${CKPT_DIR:-./checkpoints}:/workspace/checkpoints
+    working_dir: /workspace/manaca
+    shm_size: "16gb"
+    ipc: host
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    deploy: *gpu-deploy

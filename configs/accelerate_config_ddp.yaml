@@ -1,0 +1,29 @@
+# Manacá — accelerate DDP (MULTI_GPU) para treino com LoRA (DPO/SFT-LoRA).
+# =============================================================================
+# Por quê: ZeRO-3 é exagero para LoRA de ~1.7B (o modelo cabe folgado em 1 GPU).
+# O ZeRO-3 ainda adiciona overhead de gather/scatter e, no DPO (adapter liga/
+# desliga entre política e referência), causa o "Invalidate trace cache" repetido.
+# DDP replica o modelo por GPU e é bem mais rápido nesse caso.
+#
+# Observações:
+#   - grad-accumulation e grad-clipping ficam a cargo do Trainer (transformers),
+#     não deste arquivo — por isso não há bloco deepspeed com 'auto' aqui.
+#   - num_processes e a porta são SOBREPOSTOS na CLI pelo run_sft.sh
+#     (--num_processes / --main_process_port), então os valores abaixo são só
+#     defaults inertes.
+compute_environment: LOCAL_MACHINE
+debug: false
+distributed_type: MULTI_GPU
+downcast_bf16: 'no'
+enable_cpu_affinity: false
+gpu_ids: all
+machine_rank: 0
+main_training_function: main
+mixed_precision: bf16
+num_machines: 1
+num_processes: 2
+rdzv_backend: static
+same_network: true
+tpu_use_cluster: false
+tpu_use_sudo: false
+use_cpu: false
