@@ -10,15 +10,24 @@ This folder holds the **logs of the SFT runs that produced the published models*
 Docker image, hyperparameters, GPUs). Only the runs that mattered — no discarded
 attempts — to keep the record lean and auditable.
 
-## Arquivos esperados | Expected files
+## Arquivos | Files
 
-| Arquivo | Conteúdo |
-|---|---|
-| `sft_v1_<timestamp>.log` | Corrida de SFT que gerou `manaca-1b-instruct-full` (v1) |
-| `provenance_sft_v1_<timestamp>.txt` | Proveniência do run v1 (commit, args, imagem) |
-| `sft_v2_<timestamp>.log` | Corrida de SFT que gerou `manaca-1b-instruct-v2-full` (v2) |
-| `provenance_sft_v2_<timestamp>.txt` | Proveniência do run v2 |
+| Arquivo | Corrida | Resultado |
+|---|---|---|
+| `sft_v1_20260831_052916.log` + `provenance_sft_v1_...txt` | `20260831_052916` (git `03a0538`) | `manaca-1b-instruct-full` · full FT, ZeRO-3, grad_accum 128, 2 ép / 670 passos, loss 2.62→1.64 |
+| `sft_v2_20260901_015913.log` + `provenance_sft_v2_...txt` | `20260901_015913` (git `37491b7`) | `manaca-1b-instruct-v2-full` · full FT, ZeRO-3, grad_accum 128, 2 ép / 1104 passos, loss 2.77→1.59 |
 
-Os logs originais ficam na HPC em `${CKPT_DIR}/sft-logs/`. Cada linha de `loss`
-traz `epoch`, `learning_rate` e `grad_norm`, permitindo reconstruir a curva de
-treino. A proveniência amarra a corrida a um commit exato deste repositório.
+Cada linha de `loss` traz `epoch`, `learning_rate` e `grad_norm`, permitindo
+reconstruir a curva de treino. A proveniência amarra cada corrida a um commit
+exato do pipeline.
+
+### Tentativas descartadas (não versionadas, por transparência)
+
+Estes runs falharam na largada (zero treino) e **não** entram no registro, para
+mantê-lo enxuto — ficam listados aqui só para honestidade do processo:
+
+- v1: `20260831_050317`, `051551`, `052348` — `ChildFailedError` (falha de processo).
+- v2: `20260901_013034` — `EADDRINUSE` (porta 29500 ocupada por outro run).
+
+Only the successful runs are versioned; the early failed attempts above are listed
+for process honesty but intentionally kept out of the record.

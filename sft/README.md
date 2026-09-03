@@ -24,12 +24,17 @@ Only what worked and mattered — ready to audit and reproduce.
 Fiéis ao LLM-jp (full FT LR 1e-5, 2 épocas; LoRA LR 1e-4, 5 épocas), Alpaca-PT,
 `max_seq_length` 2048, bf16, gradient checkpointing.
 
-| | v1 | v2 |
+| | v1 (`20260831_052916`) | v2 (`20260901_015913`) |
 |---|---|---|
 | Base | `menezesbruno/manaca-1b-base` | idem |
 | Dados | alpaca + oasst + manaca-jaster (default) | alpaca + aya + oasst + translation + summarization + jaster completo, filtro de longos |
 | Modo | full FT | full FT |
+| grad_accum / accelerate | 128 / ZeRO-3 | 128 / ZeRO-3 |
+| Épocas / passos | 2 / 670 | 2 / 1104 |
+| Loss (início → fim) | 2.62 → 1.64 | 2.77 → 1.59 |
 | Saída | `manaca-1b-instruct-full` | `manaca-1b-instruct-v2-full` |
+
+Ambas full FT, LR 1e-5 (default de full FT), `max_seq_length` 2048, bf16.
 
 ## Reproduzir | Reproduce
 
@@ -39,12 +44,13 @@ Pré-requisitos: Docker + NVIDIA Container Toolkit; `GPUS_PER_NODE=2` no `.env`.
 cp .env.example .env            # ajuste CKPT_DIR, DATA_DIR, HF_TOKEN, GPUS_PER_NODE
 make build-posttrain            # imagem GPU (trl/accelerate/deepspeed)
 
-# ---------- Instruct v1 ----------
+# ---------- Instruct v1 ----------  (exatamente como no run 20260831_052916)
 make sft-data                   # -> data/sft/manaca_sft.jsonl
 DETACH=1 make sft ARGS="--model_name_or_path menezesbruno/manaca-1b-base \
   --data_files data/sft/manaca_sft.jsonl --full_finetuning \
-  --learning_rate 1e-5 --num_train_epochs 2 \
+  --gradient_accumulation_steps 128 \
   --output_dir /workspace/checkpoints/manaca-1b-instruct-full"
+# LR 1e-5 e 2 epocas sao os defaults de full FT (nao precisam ser passados).
 
 # ---------- Instruct v2 ----------
 make sft-data-v2                # -> data/sft_v2/manaca_sft.jsonl
