@@ -9,3 +9,9 @@ __pycache__/
 
 # Config accelerate gerado em runtime pelo run_sft.sh
 configs/.accelerate_*.gen.yaml
+
+# Conteudo nocivo cru NAO versionado (obediencia do modelo / pares DPO de seguranca):
+bench/safety_pt/answers/
+/dpo_onpolicy/
+sft_safety/
+

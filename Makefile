@@ -11,7 +11,7 @@
 # =============================================================================
 SHELL := /bin/bash
 DC := docker compose
-.PHONY: help env build-posttrain sft-data sft-data-v2 sft sft-v2
+.PHONY: help env build-posttrain sft-data sft-data-v2 sft sft-v2 sft-safety dpo
 .RECIPEPREFIX := >
 
 help:  ## Lista os alvos
@@ -34,3 +34,9 @@ sft:  ## SFT (Fase 3a): make sft ARGS="..."  (DETACH=1 para segundo plano)
 
 sft-v2:  ## SFT v2 (full FT) -> checkpoints/manaca-1b-instruct-v2-full (NAO sobrescreve a v1). DETACH=1 p/ 2o plano
 > ./scripts/docker/run_sft.sh sft --model_name_or_path menezesbruno/manaca-1b-base --data_files data/sft_v2/manaca_sft.jsonl --full_finetuning --gradient_accumulation_steps 128 --output_dir /workspace/checkpoints/manaca-1b-instruct-v2-full $(ARGS)
+
+sft-safety:  ## Safety-SFT (LoRA sobre o v2, DDP): recusa o nocivo sem virar recusador cego -> instruct-v2-safe (o "safe"). Ver docs/evaluation/safety-alignment-pt.md
+> ACCELERATE_CONFIG=$${ACCELERATE_CONFIG:-configs/accelerate_config_ddp.yaml} ./scripts/docker/run_sft.sh sft --model_name_or_path /workspace/checkpoints/manaca-1b-instruct-v2-full --data_files sft_safety/safety_sft.jsonl --output_dir /workspace/checkpoints/manaca-1b-instruct-v2-safe --lora_r 32 --lora_alpha 64 --num_train_epochs 3 --learning_rate 1e-4 --gradient_accumulation_steps 8 --save_steps 200 $(ARGS)
+
+dpo:  ## DPO on-policy (RESULTADO NEGATIVO documentado; nao mudou a geracao). Ver dpo/README-onpolicy.md
+> ACCELERATE_CONFIG=$${ACCELERATE_CONFIG:-configs/accelerate_config_ddp.yaml} ./scripts/docker/run_sft.sh dpo $(ARGS)

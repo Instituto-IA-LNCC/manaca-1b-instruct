@@ -137,9 +137,14 @@ Já disponível neste repositório (o que funcionou e valeu, sem tentativas falh
 - **Avaliação comparativa (instructs)** — [`docs/evaluation/instruct-eval-pt.md`](docs/evaluation/instruct-eval-pt.md);
   harness em [`bench/`](bench/) e [`scripts/eval/`](scripts/eval/), com as saídas
   cruas e as notas do juiz versionadas.
+- **Alinhamento de segurança (o instruct safe)** — registro completo em
+  [`docs/evaluation/safety-alignment-pt.md`](docs/evaluation/safety-alignment-pt.md);
+  método adotado (safety-SFT) em [`sft/gen_safety_sft.py`](sft/gen_safety_sft.py) +
+  [`sft/README-safety.md`](sft/README-safety.md); sondas em [`bench/safety_pt/`](bench/safety_pt/)
+  e [`bench/overrefusal_pt/`](bench/overrefusal_pt/); o **DPO** (resultado negativo)
+  em [`dpo/`](dpo/) com o diagnóstico [`dpo/diag_dpo.py`](dpo/diag_dpo.py).
 
-O alinhamento de segurança (safety-SFT) que produziu o instruct **safe** entra em
-seguida. A base (pré-treino e avaliação) fica em
+A base (pré-treino e avaliação) fica em
 [`manaca-1b-base`](https://github.com/Instituto-IA-LNCC/manaca-1b-base).
 
 ### Segurança e limitações
@@ -299,8 +304,13 @@ Already in this repository (what worked and mattered, no failed attempts):
 - **Comparative evaluation (instructs)** — [`docs/evaluation/instruct-eval-pt.md`](docs/evaluation/instruct-eval-pt.md);
   harness in [`bench/`](bench/) and [`scripts/eval/`](scripts/eval/), with raw model
   outputs and judge scores versioned.
+- **Safety alignment (the safe instruct)** — full record in
+  [`docs/evaluation/safety-alignment-pt.md`](docs/evaluation/safety-alignment-pt.md);
+  adopted method (safety-SFT) in [`sft/gen_safety_sft.py`](sft/gen_safety_sft.py) +
+  [`sft/README-safety.md`](sft/README-safety.md); probes in [`bench/safety_pt/`](bench/safety_pt/)
+  and [`bench/overrefusal_pt/`](bench/overrefusal_pt/); the **DPO** (negative result)
+  in [`dpo/`](dpo/) with the [`dpo/diag_dpo.py`](dpo/diag_dpo.py) diagnostic.
 
-The safety alignment (safety-SFT) that produced the **safe** instruct comes next.
 The base (pretraining and evaluation) lives in
 [`manaca-1b-base`](https://github.com/Instituto-IA-LNCC/manaca-1b-base).
 
