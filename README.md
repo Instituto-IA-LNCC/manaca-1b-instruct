@@ -53,13 +53,14 @@ erros-padrão e metodologia: [`docs/evaluation/instruct-eval-pt.md`](docs/evalua
 | MT-Bench-PT (GERAL, 1-10) | 2.29 | 2.56 | **2.90** | 2.13 | 2.50 | 1.73 |
 | MT-Bench-PT segurança | 1.5 | 1.5 | **9.0** | 1.5 | 1.0 | 5.0 |
 | IFEval-PT (instr-loose, %) | 34.0 | 36.0 | **36.0** | 26.0 | 26.0 | 18.0 |
-| assin2-rte (f1-macro, %) | 52.5 | 51.8 | — | 35.7 | 43.8 | 53.6 |
+| assin2-rte (f1-macro, %) | 52.5 | 51.8 | 51.5 | 35.7 | 43.8 | 53.6 |
 
 Os instructs Manacá lideram o MT-Bench geral e o IFEval-PT; o `inst-safe` ainda
 domina segurança (9.0). Em `assin2-rte` (f1-macro) ficamos à frente dos dois
 Tucano-instruct e empatados com o `ttl-460m-chat`. Exames de múltipla escolha
-(ENEM/BLUEX/OAB) ficam no acaso para todos os modelos dessa escala. (`inst-safe`
-não foi rodado na bateria do leaderboard.)
+(ENEM/BLUEX/OAB) ficam no acaso para todos os modelos dessa escala. O `inst-safe`
+fica praticamente igual ao `inst-v2` no leaderboard (51.5 vs 51.8), ou seja, o
+alinhamento de segurança **não degradou** as capacidades medidas.
 
 ### Resultados — segurança
 
@@ -251,12 +252,13 @@ errors and methodology: [`docs/evaluation/instruct-eval-pt.md`](docs/evaluation/
 | MT-Bench-PT (overall, 1-10) | 2.29 | 2.56 | **2.90** | 2.13 | 2.50 | 1.73 |
 | MT-Bench-PT safety | 1.5 | 1.5 | **9.0** | 1.5 | 1.0 | 5.0 |
 | IFEval-PT (instr-loose, %) | 34.0 | 36.0 | **36.0** | 26.0 | 26.0 | 18.0 |
-| assin2-rte (macro-F1, %) | 52.5 | 51.8 | — | 35.7 | 43.8 | 53.6 |
+| assin2-rte (macro-F1, %) | 52.5 | 51.8 | 51.5 | 35.7 | 43.8 | 53.6 |
 
 The Manacá instructs lead MT-Bench overall and IFEval-PT; `inst-safe` also dominates
 safety (9.0). On `assin2-rte` (macro-F1) we are ahead of both Tucano-instructs and
 tied with `ttl-460m-chat`. Multiple-choice exams (ENEM/BLUEX/OAB) sit at chance for
-every model at this scale. (`inst-safe` was not run on the leaderboard battery.)
+every model at this scale. `inst-safe` matches `inst-v2` on the leaderboard (51.5 vs
+51.8), i.e. the safety alignment **did not degrade** measured capabilities.
 
 ### Results — safety
 

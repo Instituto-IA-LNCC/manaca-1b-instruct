@@ -67,7 +67,8 @@ do lm-eval.
 | Modelo | assin2_rte | faquad_nli | hatebr | hatespeech |
 |---|:--:|:--:|:--:|:--:|
 | manaca-instruct-v1 | 52.49 (53.6) | 43.92 (78.3) | 39.02 (50.0) | 41.74 (68.3) |
-| manaca-instruct-v2 | 51.83 (51.8) | 44.93 (77.4) | 40.13 (48.7) | **42.29** (68.0) |
+| manaca-instruct-v2 | 51.83 (51.8) | 44.93 (77.4) | 40.13 (48.7) | 42.29 (68.0) |
+| manaca-instruct-safe | 51.54 (52.3) | 45.61 (77.5) | 40.59 (49.1) | **42.93** (67.9) |
 | ttl-460m-chat | **53.61** (55.0) | 37.59 (38.2) | **40.67** (45.8) | 39.37 (39.9) |
 | tucano-1b1-instruct | 35.69 (50.1) | 44.97 (71.2) | 30.64 (38.0) | 42.18 (66.2) |
 | tucano-2b4-instruct | 43.75 (51.7) | **45.66** (74.9) | 37.19 (45.9) | 41.58 (68.2) |
@@ -83,6 +84,7 @@ escondem viés de classe majoritária — por isso o f1-macro é o número repor
 |---|:--:|:--:|:--:|
 | manaca-instruct-v1 | 20.82 | 23.55 | 23.57 |
 | manaca-instruct-v2 | 20.55 | 22.16 | 22.71 |
+| manaca-instruct-safe | 19.50 | 21.19 | 22.90 |
 | tucano-1b1-instruct | 20.06 | 24.65 | 26.65 |
 | tucano-2b4-instruct | 20.82 | 20.78 | 23.98 |
 | ttl-460m-chat | 19.36 | 23.96 | 24.62 |
@@ -97,8 +99,10 @@ de 0.4–2.4B; nenhum resolve exame de múltipla escolha nessa escala.
   2.90 e segurança 9.0), sem perder o seguir-instrução.
 - **Frente aos pares PT-BR**: lideramos IFEval-PT e MT-Bench GERAL; competitivos ou
   à frente em `assin2_rte` (f1-macro); exames no acaso para todos.
-- `manaca-instruct-safe` não foi rodado na bateria do leaderboard (foco do
-  alinhamento foi segurança/utilidade; ver o registro de alinhamento).
+- **Alinhamento não degradou o leaderboard**: o `manaca-instruct-safe` fica
+  praticamente igual ao `instruct-v2` na bateria PT-BR (assin2_rte f1 51.5 vs 51.8;
+  faquad/hatebr/hatespeech e exames dentro do ruído) — o safety-SFT preservou as
+  capacidades medidas por log-verossimilhança.
 
 ## 5. Metodologia e reprodução
 
