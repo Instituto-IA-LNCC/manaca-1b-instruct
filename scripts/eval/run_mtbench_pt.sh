@@ -4,7 +4,7 @@
 # -----------------------------------------------------------------------------
 # Dois modos:
 #   LOCAL (modelo em disco, ex.: o Manaca):
-#     MODEL=/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-full \
+#     MODEL=/data/manaca/checkpoints/manaca-1b-instruct-full \
 #     LABEL=manaca-instruct-v1 ./scripts/eval/run_mtbench_pt.sh
 #
 #   HUB (baixa do Hugging Face, ex.: baselines instruct):

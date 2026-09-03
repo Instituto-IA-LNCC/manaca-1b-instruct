@@ -10,7 +10,7 @@ parada pelo sinal, e decisão pela avaliação (MT-Bench-PT / IFEval-PT).
 ## 1. Gerar os pares (na HPC, GPU)
 
 ```bash
-cd /prj/prjgvdc/brunolsm/manaca-1b
+cd $HOME/manaca-1b
 
 # (a) SEGURANCA — regra, offline. Maior retorno. (rejected = obediencia do modelo)
 DETACH=1 MODE=safety      ./scripts/run_gen_dpo_pairs.sh
@@ -66,13 +66,13 @@ Comparar o DPO contra o **instruct-v2** com a nossa avaliação:
 ```bash
 # over-refusal: ANTES (SFT) e DEPOIS (DPO). 'sensivel_legitimo' nao pode subir.
 LABEL=manaca-instruct-v2 ./scripts/eval/run_overrefusal_pt.sh
-MODEL=/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-v2-dpo2-merged \
+MODEL=/data/manaca/checkpoints/manaca-1b-instruct-v2-dpo2-merged \
   LABEL=manaca-instruct-v2-dpo2 ./scripts/eval/run_overrefusal_pt.sh
 ```
 
 ```bash
 # gera respostas do DPO e julga (mesma infra do bench)
-MODEL=/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-v2-dpo2-merged \
+MODEL=/data/manaca/checkpoints/manaca-1b-instruct-v2-dpo2-merged \
   LABEL=manaca-instruct-v2-dpo2 ./scripts/eval/run_mtbench_pt.sh
 python3 bench/mtbench_pt/judge.py --answers bench/mtbench_pt/answers/manaca-instruct-v2-dpo2.jsonl \
   --out bench/mtbench_pt/judged/manaca-instruct-v2-dpo2.jsonl

@@ -16,7 +16,7 @@ set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 IMAGE="${EVAL_IMAGE:-manaca-lmeval:latest}"
-MODEL="${MODEL:-/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-v2-full}"
+MODEL="${MODEL:-/data/manaca/checkpoints/manaca-1b-instruct-v2-full}"
 MODEL="$(realpath -m "$MODEL")"
 OUT="${OUT:-sft_safety/safety_sft.jsonl}"
 # Receita vencedora (safe4): K_REFUSE=4 recusas por prompt + benign-help disjunto

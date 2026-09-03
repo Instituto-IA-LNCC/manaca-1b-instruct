@@ -2,7 +2,7 @@
 # =============================================================================
 # Manaca-1B - Constroi a imagem manaca-lmeval SEM `docker build`
 # -----------------------------------------------------------------------------
-# No netuno o `docker build` nao aceita --sysctl e o DNS quebra com IPv6 (o pip
+# No a HPC o `docker build` nao aceita --sysctl e o DNS quebra com IPv6 (o pip
 # nao resolve o pypi). Aqui instalamos o lm-eval DENTRO da manaca-train (que ja
 # tem torch + transformers==4.46.3, compatíveis) via `docker run` com IPv6
 # desabilitado (onde o DNS funciona) e commitamos a imagem, preservando o
@@ -16,7 +16,7 @@ set -euo pipefail
 
 BASE="${BASE_IMAGE:-manaca-train:latest}"
 OUT="${OUT_IMAGE:-manaca-lmeval:latest}"
-# O netuno ROTEIA ate o pypi (Fastly) mas nao RESOLVE o nome. Fixamos o IP anycast
+# O a HPC ROTEIA ate o pypi (Fastly) mas nao RESOLVE o nome. Fixamos o IP anycast
 # do Fastly no /etc/hosts do container p/ contornar o DNS. Se mudar, sobrescreva
 # com PYPI_IP=<ip> (descubra com: python3 -c "import socket;print(socket.gethostbyname('pypi.org'))").
 PYPI_IP="${PYPI_IP:-151.101.0.223}"

@@ -13,7 +13,7 @@
 # Uso (dentro de tmux):
 #   ./scripts/eval/build_lmeval_image.sh  # cria manaca-lmeval (run+commit; DNS ok)
 #   ./scripts/eval/run_lm_eval_pt.sh      # roda os 9 modelos do hub + Manaca
-# (No netuno use o build_lmeval_image.sh, NAO `docker build`: o build nao aceita
+# (No a HPC use o build_lmeval_image.sh, NAO `docker build`: o build nao aceita
 #  --sysctl e o DNS quebra com IPv6. docker/Dockerfile.lmeval so serve onde o DNS
 #  do build funciona. Alternativa: EVAL_IMAGE=manaca-eval:latest, imagem com vLLM.)
 #
@@ -29,7 +29,7 @@ set -uo pipefail
 
 SELF_DIR="$(cd "$(dirname "$0")" && pwd)"
 IMAGE="${EVAL_IMAGE:-manaca-lmeval:latest}"
-MANACA_HF="${MANACA_HF:-/prj/prjgvdc/brunolsm/work/manaca-1b-hf}"
+MANACA_HF="${MANACA_HF:-$HOME/work/manaca-1b-hf}"
 MANACA_TOK="${MANACA_TOKENIZER:-}"
 # Rotulo do modelo Manaca local (para avaliar base/instruct-v1/instruct-v2 lado a
 # lado, com resultados em pastas distintas). Ex.: MANACA_LABEL=manaca-instruct-v2

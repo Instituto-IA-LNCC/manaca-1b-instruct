@@ -25,7 +25,7 @@ benigno** (respostas úteis geradas pelo próprio SFT, on-policy) + **dados gera
 (amostra do SFT v2, preserva a utilidade ampla).
 
 ```bash
-cd /prj/prjgvdc/brunolsm/manaca-1b
+cd $HOME/manaca-1b
 DETACH_OK=; K_REFUSE=2 N_GENERAL=200 GPUS=device=0 ./scripts/run_gen_safety_sft.sh
 wc -l sft_safety/safety_sft.jsonl
 ```
@@ -41,7 +41,7 @@ dados gerais reamostrados, então fica **fora do git** (`.gitignore`); a receita
 ```bash
 DETACH=1 make sft-safety
 #   -> adapter em manaca-1b-instruct-v2-safe, mesclado em manaca-1b-instruct-v2-safe-merged
-#   acompanhar: tail -f /data/brunolsm/manaca-checkpoints/sft-logs/sft_*.log | grep -Ei 'loss|epoch'
+#   acompanhar: tail -f /data/manaca/checkpoints/sft-logs/sft_*.log | grep -Ei 'loss|epoch'
 ```
 
 Usa DDP (não ZeRO-3) e LoRA r=32, 3 épocas, LR 1e-4. Não sobrescreve o
@@ -58,7 +58,7 @@ make sft-safety ARGS="--no_merge"
 ## 3. Avaliar (o mesmo tribunal do DPO)
 
 ```bash
-M=/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-v2-safe-merged
+M=/data/manaca/checkpoints/manaca-1b-instruct-v2-safe-merged
 
 # (a) SEGURANÇA held-out — recusa deve SUBIR muito (era 0/16 no SFT)
 MODEL=$M LABEL=safe ./scripts/eval/run_overrefusal_pt.sh \

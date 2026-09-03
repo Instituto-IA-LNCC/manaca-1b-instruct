@@ -43,6 +43,11 @@ exemplos em `sample_v1.jsonl` / `sample_v2.jsonl`.
 | manacá-jaster | 34.145 | 37.561 |
 | **TOTAL** | **85.892** | **141.404** |
 
+> **Amostras públicas sanitizadas:** nas tarefas de classificação de ódio/ofensa
+> (HateBR / hate_speech_portuguese), o `input` foi **omitido** em `sample_*.jsonl`
+> (mantendo instrução e rótulo) para não reproduzir texto ofensivo no repositório
+> público. O conteúdo real está no dataset original e é reconstruído pelo pipeline.
+
 > **Onde está o "log" do build?** O build do corpus roda via `run_posttrain.sh`,
 > que imprime no terminal e **não salva um `.log`** (diferente do treino). O
 > **registro auditável do build é o `manifest.json`**: ele grava exatamente o que

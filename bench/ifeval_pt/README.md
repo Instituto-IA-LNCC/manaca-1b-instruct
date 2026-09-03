@@ -25,12 +25,12 @@ Os tipos de instrução e seus checadores estão em `checkers.py`.
 Locais (Manacá) e do HF (baselines), cada um com seu `chat_template`:
 
 ```bash
-cd /prj/prjgvdc/brunolsm/manaca-1b
+cd $HOME/manaca-1b
 Q=bench/ifeval_pt/prompts.jsonl; A=bench/ifeval_pt/answers
 
-QUESTIONS=$Q ANS_DIR=$A MODEL=/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-full \
+QUESTIONS=$Q ANS_DIR=$A MODEL=/data/manaca/checkpoints/manaca-1b-instruct-full \
   LABEL=manaca-instruct-v1 ./scripts/eval/run_mtbench_pt.sh
-QUESTIONS=$Q ANS_DIR=$A MODEL=/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-v2-full \
+QUESTIONS=$Q ANS_DIR=$A MODEL=/data/manaca/checkpoints/manaca-1b-instruct-v2-full \
   LABEL=manaca-instruct-v2 ./scripts/eval/run_mtbench_pt.sh
 
 QUESTIONS=$Q ANS_DIR=$A HF_CACHE=$HOME/hf_cache_mtbench \

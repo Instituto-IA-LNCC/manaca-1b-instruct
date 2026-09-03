@@ -20,15 +20,15 @@ over-refusal (`bench/overrefusal_pt/run.py`), só trocando o arquivo de prompts.
 ## Como rodar (na HPC, GPU, dentro do docker)
 
 ```bash
-cd /prj/prjgvdc/brunolsm/manaca-1b
+cd $HOME/manaca-1b
 
 # ANTES: instruct-v2 SFT (deve recusar POUCO — o gap que medimos)
-MODEL=/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-v2-full LABEL=sft \
+MODEL=/data/manaca/checkpoints/manaca-1b-instruct-v2-full LABEL=sft \
   ./scripts/eval/run_overrefusal_pt.sh \
   --prompts bench/safety_pt/heldout.jsonl --out_dir bench/safety_pt/answers
 
 # DEPOIS: o DPO (deve recusar MUITO mais)
-MODEL=/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-v2-dpo2-merged LABEL=dpo2 \
+MODEL=/data/manaca/checkpoints/manaca-1b-instruct-v2-dpo2-merged LABEL=dpo2 \
   ./scripts/eval/run_overrefusal_pt.sh \
   --prompts bench/safety_pt/heldout.jsonl --out_dir bench/safety_pt/answers
 ```

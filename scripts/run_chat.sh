@@ -15,7 +15,7 @@ set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 IMAGE="${EVAL_IMAGE:-manaca-lmeval:latest}"
-MODEL="${MODEL:-/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-v2-full}"
+MODEL="${MODEL:-/data/manaca/checkpoints/manaca-1b-instruct-v2-full}"
 MODEL="$(realpath -m "$MODEL")"
 
 GPU_FLAG=(--gpus "${GPUS:-all}"); [ "${NO_GPU:-0}" = "1" ] && GPU_FLAG=()

@@ -17,7 +17,7 @@ set -euo pipefail
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 IMAGE="${EVAL_IMAGE:-manaca-lmeval:latest}"
 MODE="${MODE:-safety}"
-MODEL="${MODEL:-/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-v2-full}"
+MODEL="${MODEL:-/data/manaca/checkpoints/manaca-1b-instruct-v2-full}"
 MODEL="$(realpath -m "$MODEL")"
 # Saida na raiz do repo (do usuario), NAO em data/ (que e do root). Fica dentro
 # do mount do docker (/work) e coberta pelo .gitignore.

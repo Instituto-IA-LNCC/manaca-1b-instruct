@@ -24,12 +24,12 @@ Método fiel ao LLM-jp:
 ### 1. Gerar as respostas de cada modelo (na HPC, com GPU)
 
 ```bash
-cd /prj/prjgvdc/brunolsm/manaca-1b
+cd $HOME/manaca-1b
 
-MODEL=/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-full \
+MODEL=/data/manaca/checkpoints/manaca-1b-instruct-full \
 LABEL=manaca-instruct-v1 ./scripts/eval/run_mtbench_pt.sh
 
-MODEL=/data/brunolsm/manaca-checkpoints/manaca-1b-instruct-v2-full \
+MODEL=/data/manaca/checkpoints/manaca-1b-instruct-v2-full \
 LABEL=manaca-instruct-v2 ./scripts/eval/run_mtbench_pt.sh
 ```
 
