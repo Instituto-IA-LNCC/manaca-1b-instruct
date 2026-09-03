@@ -110,6 +110,33 @@ roleplay e stem. Detalhes e a fronteira segurança × prestatividade completa:
 Por que SFT e não DPO: a segurança do LLM-jp veio do AnswerCarefully (SFT de
 segurança), não de DPO. O pivô é, portanto, **mais fiel** ao método deles.
 
+### O corpus de instrução
+
+Todo o corpus de SFT vem de **fontes de licença aberta**, convertidas para o esquema
+Alpaca `{instruction, input, output}`. A v1 e a v2 usaram composições diferentes.
+Ficha completa (splits, licenças, contagens reais, `sha256` por tarefa) e comandos:
+[`docs/data/`](docs/data/) — código em [`sft/prepare_data.py`](sft/prepare_data.py) e
+[`sft/jaster/build_jaster.py`](sft/jaster/build_jaster.py).
+
+**Fontes de instrução/conversa:**
+
+| Fonte | HF id | v1 | v2 |
+|---|---|:--:|:--:|
+| Alpaca-PT | `dominguesm/alpaca-data-pt-br` | ✓ | ✓ |
+| Aya (pt) | `CohereForAI/aya_dataset` | | ✓ |
+| OASST1 (pt) | `OpenAssistant/oasst1` | ✓* | ✓ |
+| Tradução | `Helsinki-NLP/opus-100` (en-pt) | | ✓ |
+| Sumarização | `csebuetnlp/xlsum` (portuguese) | | ✓ |
+
+**manacá-jaster** — tarefas de NLP PT-BR convertidas em instrução: ASSIN2, SICK-BR,
+FaQuAD, ENEM, HAREM, LeNER-Br, TweetSentBR, HateBR, Pirá (v1: 10 tarefas; a v2
+acrescenta SICK-BR-STS e Mac-Morpho). HF ids na ficha completa.
+
+Totais após dedup/filtro: **v1 = 85.892** exemplos · **v2 = 141.404** exemplos.
+Todas as fontes de licença aberta; a mistura inclui fontes **não-comerciais**
+(Alpaca-PT, XLSum) — ver a nota de licença no data card. *No v1 o filtro de OASST
+retornou 0 exemplos (corrigido na v2).
+
 ### O modelo
 
 Herda integralmente a arquitetura do [Manacá-1B base](https://github.com/Instituto-IA-LNCC/manaca-1b-base)
@@ -280,6 +307,32 @@ roleplay and stem. Details and the full safety × helpfulness frontier:
 
 Why SFT and not DPO: LLM-jp's safety came from AnswerCarefully (a safety SFT dataset),
 not from DPO. The pivot is therefore **more faithful** to their method.
+
+### The instruction corpus
+
+The whole SFT corpus comes from **openly licensed sources**, converted to the Alpaca
+`{instruction, input, output}` schema. v1 and v2 used different mixes. Full card
+(splits, licenses, actual counts, per-task `sha256`) and commands: [`docs/data/`](docs/data/)
+— code in [`sft/prepare_data.py`](sft/prepare_data.py) and [`sft/jaster/build_jaster.py`](sft/jaster/build_jaster.py).
+
+**Instruction/conversation sources:**
+
+| Source | HF id | v1 | v2 |
+|---|---|:--:|:--:|
+| Alpaca-PT | `dominguesm/alpaca-data-pt-br` | ✓ | ✓ |
+| Aya (pt) | `CohereForAI/aya_dataset` | | ✓ |
+| OASST1 (pt) | `OpenAssistant/oasst1` | ✓* | ✓ |
+| Translation | `Helsinki-NLP/opus-100` (en-pt) | | ✓ |
+| Summarization | `csebuetnlp/xlsum` (portuguese) | | ✓ |
+
+**manacá-jaster** — PT-BR NLP tasks converted to instructions: ASSIN2, SICK-BR,
+FaQuAD, ENEM, HAREM, LeNER-Br, TweetSentBR, HateBR, Pirá (v1: 10 tasks; v2 adds
+SICK-BR-STS and Mac-Morpho). HF ids in the full card.
+
+Totals after dedup/filtering: **v1 = 85,892** examples · **v2 = 141,404** examples.
+All sources openly licensed; the mix includes **non-commercial** sources (Alpaca-PT,
+XLSum) — see the license note in the data card. *In v1 the OASST filter returned 0
+examples (fixed in v2).
 
 ### The model
 
