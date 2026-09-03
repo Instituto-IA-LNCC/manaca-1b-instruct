@@ -1,8 +1,9 @@
 # Ambiente local e artefatos de execução (não versionar)
+# (ancorados na raiz: NAO afetam docs/data, que e documentacao do corpus)
 .env
-data/
-hf-cache/
-checkpoints/
+/data/
+/hf-cache/
+/checkpoints/
 __pycache__/
 *.pyc
 
