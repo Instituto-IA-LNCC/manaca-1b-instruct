@@ -20,15 +20,13 @@
 
 > [!WARNING]
 > **Status: release de pesquisa experimental (v0.1).** Este repositório e os modelos
-> resultantes são publicados para pesquisa, auditoria e reprodutibilidade. **Não são
-> recomendados para produção** nem para qualquer aplicação com impacto sobre pessoas.
+> resultantes são publicados para pesquisa, auditoria e reprodutibilidade. 
 > As capacidades gerais ainda são baixas em termos absolutos (MT-Bench-PT 2,90 de 10;
 > exames de múltipla escolha no nível do acaso) e o alinhamento de segurança tem
 > recall aproximado de 75%, medido em sondas pequenas.
 >
 > **Status: experimental research release (v0.1).** This repository and the resulting
-> models are published for research, auditing and reproducibility. They are **not
-> recommended for production** or for any application affecting people. Absolute
+> models are published for research, auditing and reproducibility. Absolute
 > capability is still low (MT-Bench-PT 2.90 of 10; multiple-choice exams at chance
 > level) and safety alignment has roughly 75% recall, measured on small probes.
 
