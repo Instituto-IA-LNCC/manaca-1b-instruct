@@ -9,6 +9,7 @@
 > **Cooperação científica LNCC × NII/LLM-jp** — Laboratório Nacional de Computação
 > Científica (Brasil) × National Institute of Informatics (Japão).
 
+[![Status: experimental](https://img.shields.io/badge/Status-release%20de%20pesquisa%20experimental%20v0.1-orange.svg)]()
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Model: Manacá-1B-Instruct](https://img.shields.io/badge/Model-Manac%C3%A1--1B--Instruct-8A2BE2.svg)]()
 [![Base model on Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Base-menezesbruno%2Fmanaca--1b--base-yellow.svg)](https://huggingface.co/menezesbruno/manaca-1b-base)
@@ -16,6 +17,20 @@
 [![Alignment: safety-SFT](https://img.shields.io/badge/Alignment-safety--SFT-purple.svg)](docs/evaluation/safety-alignment-pt.md)
 [![Language: PT-BR](https://img.shields.io/badge/Language-PT--BR-009c3b.svg)]()
 [![Institution: LNCC](https://img.shields.io/badge/Institution-LNCC-002776.svg)](https://www.lncc.br)
+
+> [!WARNING]
+> **Status: release de pesquisa experimental (v0.1).** Este repositório e os modelos
+> resultantes são publicados para pesquisa, auditoria e reprodutibilidade. **Não são
+> recomendados para produção** nem para qualquer aplicação com impacto sobre pessoas.
+> As capacidades gerais ainda são baixas em termos absolutos (MT-Bench-PT 2,90 de 10;
+> exames de múltipla escolha no nível do acaso) e o alinhamento de segurança tem
+> recall aproximado de 75%, medido em sondas pequenas.
+>
+> **Status: experimental research release (v0.1).** This repository and the resulting
+> models are published for research, auditing and reproducibility. They are **not
+> recommended for production** or for any application affecting people. Absolute
+> capability is still low (MT-Bench-PT 2.90 of 10; multiple-choice exams at chance
+> level) and safety alignment has roughly 75% recall, measured on small probes.
 
 ```
            branca           rosa-lilás         púrpura
@@ -45,11 +60,12 @@
 ## Português
 
 **Manacá-1B-Instruct** é a versão **instruct (pós-treinada)** do
-[**Manacá-1B base**](https://github.com/Instituto-IA-LNCC/manaca-1b-base): o mesmo
-decoder-only de **~1,72 bilhão de parâmetros** treinado do zero para o português do
-Brasil, agora ajustado para **seguir instruções e recusar pedidos nocivos com
-segurança**. Este repositório existe para tornar **cientificamente reprodutível e
-auditável todo o caminho até o instruct seguro** — incluindo o que **não** funcionou.
+[**Manacá-1B base**](https://github.com/Instituto-IA-LNCC/manaca-1b-base), publicada
+como **release de pesquisa experimental**: o mesmo decoder-only de **~1,72 bilhão de
+parâmetros** treinado do zero para o português do Brasil, agora ajustado para
+**seguir instruções e recusar pedidos nocivos com segurança**. Este repositório existe
+para tornar **cientificamente reprodutível e auditável todo o caminho até o instruct
+seguro** — incluindo o que **não** funcionou.
 
 O resultado central é metodológico e honesto: o **DPO** (fiel ao LLM-jp) foi testado
 e **não reverteu** a obediência do modelo a pedidos nocivos; a segurança veio de um
@@ -82,6 +98,8 @@ Tucano-instruct e empatados com o `ttl-460m-chat`. Exames de múltipla escolha
 (ENEM/BLUEX/OAB) ficam no acaso para todos os modelos dessa escala. O `inst-safe`
 fica praticamente igual ao `inst-v2` no leaderboard (51.5 vs 51.8), ou seja, o
 alinhamento de segurança **não degradou** as capacidades medidas.
+**Todos os números absolutos são baixos: a comparação é relativa entre modelos dessa
+escala e não indica prontidão para uso real.**
 
 ### Resultados — segurança
 
@@ -99,7 +117,8 @@ MT-Bench-PT `segurança` é a nota do juiz LLM (1 a 10) nos 6 prompts de seguran
 Leitura honesta: o SFT puro é prestativo mas **obedecia a 99% dos pedidos nocivos**;
 o alinhamento leva a recusa de pedidos nocivos inéditos a 75% e a nota de segurança
 do MT-Bench de 1,5 para 9,0, a um custo pequeno e medido de recusa indevida em
-pedidos benignos.
+pedidos benignos. **75% de recall não é um nível de segurança adequado para uso em
+produção**, e as sondas são pequenas (16 / 34 itens).
 
 ### Resultados — utilidade preservada
 
@@ -172,6 +191,7 @@ SentencePiece 64k `nmt_nfkc_cf`). O pós-treino é um ajuste por cima desses pes
 | Pós-treino | SFT (full FT) + safety-SFT (LoRA) |
 | Alinhamento | recusa de pedidos nocivos + ajuda ao benigno |
 | Precisão | bfloat16 |
+| Status | release de pesquisa experimental (v0.1) |
 
 ### Como reproduzir
 
@@ -200,7 +220,16 @@ Já disponível neste repositório (o que funcionou e valeu, sem tentativas falh
 A base (pré-treino e avaliação) fica em
 [`manaca-1b-base`](https://github.com/Instituto-IA-LNCC/manaca-1b-base).
 
-### Segurança e limitações
+### Uso pretendido, limitações e segurança
+
+**Uso pretendido:** pesquisa em modelos de linguagem para o português, replicação do
+pipeline, estudo de alinhamento em pequena escala, uso didático.
+
+**Fora de escopo:** produção, atendimento ao público, decisões automatizadas,
+aconselhamento médico, jurídico ou psicológico, e qualquer contexto em que uma
+resposta errada tenha custo real.
+
+**Limitações conhecidas:**
 
 - **Recall de segurança ~75%**: pedidos de fraseado ambíguo ainda podem passar.
 - **Over-refusal**: uma fração pequena de pedidos benignos é recusada.
@@ -234,9 +263,9 @@ Licenciado sob **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
 ```
 Menezes, B.L.S., Cardoso, C.L.S., & Porto, F.A.M. (2026). Manacá-1B-Instruct: An
 Open, Auditable Instruction-Tuned Brazilian-Portuguese Language Model, with a
-Negative Result on DPO and a Safety-SFT Alignment. Preprint. LNCC (Instituto de IA)
-× NII/LLM-jp. GitHub: https://github.com/brunoleomenezes/manaca-1b-instruct ·
-License: CC BY 4.0.
+Negative Result on DPO and a Safety-SFT Alignment. Preprint, experimental research
+release v0.1. LNCC (Instituto de IA) × NII/LLM-jp.
+GitHub: https://github.com/brunoleomenezes/manaca-1b-instruct · License: CC BY 4.0.
 ```
 
 ---
@@ -244,11 +273,12 @@ License: CC BY 4.0.
 ## English
 
 **Manacá-1B-Instruct** is the **instruction-tuned (post-trained)** version of the
-[**Manacá-1B base**](https://github.com/Instituto-IA-LNCC/manaca-1b-base): the same
-decoder-only model of **~1.72 billion parameters**, trained from scratch for
-Brazilian Portuguese, now tuned to **follow instructions and to refuse harmful
-requests safely**. This repository exists to make the **whole path to the safe
-instruct scientifically reproducible and auditable** — including what did **not** work.
+[**Manacá-1B base**](https://github.com/Instituto-IA-LNCC/manaca-1b-base), released as
+an **experimental research artifact**: the same decoder-only model of **~1.72 billion
+parameters**, trained from scratch for Brazilian Portuguese, now tuned to **follow
+instructions and to refuse harmful requests safely**. This repository exists to make
+the **whole path to the safe instruct scientifically reproducible and auditable** —
+including what did **not** work.
 
 The central result is methodological and honest: **DPO** (faithful to LLM-jp) was
 tried and **did not** reverse the model's compliance with harmful requests; safety
@@ -280,6 +310,8 @@ safety (9.0). On `assin2-rte` (macro-F1) we are ahead of both Tucano-instructs a
 tied with `ttl-460m-chat`. Multiple-choice exams (ENEM/BLUEX/OAB) sit at chance for
 every model at this scale. `inst-safe` matches `inst-v2` on the leaderboard (51.5 vs
 51.8), i.e. the safety alignment **did not degrade** measured capabilities.
+**All absolute scores are low: the comparison is relative among models at this scale
+and does not indicate readiness for real use.**
 
 ### Results — safety
 
@@ -297,7 +329,8 @@ MT-Bench-PT `safety` is the LLM-judge score (1 to 10) on the 6 safety prompts.
 Honest reading: the plain SFT is helpful but **complied with 99% of harmful
 requests**; alignment takes refusal of unseen harmful requests to 75% and the
 MT-Bench safety score from 1.5 to 9.0, at a small, measured cost of undue refusal on
-benign requests.
+benign requests. **75% recall is not an adequate safety level for production use**,
+and the probes are small (16 / 34 items).
 
 ### Results — utility preserved
 
@@ -370,6 +403,7 @@ It fully inherits the architecture of the [Manacá-1B base](https://github.com/I
 | Post-training | SFT (full FT) + safety-SFT (LoRA) |
 | Alignment | refuse harmful requests + help the benign |
 | Precision | bfloat16 |
+| Status | experimental research release (v0.1) |
 
 ### How to reproduce
 
@@ -398,7 +432,16 @@ Already in this repository (what worked and mattered, no failed attempts):
 The base (pretraining and evaluation) lives in
 [`manaca-1b-base`](https://github.com/Instituto-IA-LNCC/manaca-1b-base).
 
-### Safety & limitations
+### Intended use, limitations & safety
+
+**Intended use:** research on Portuguese language models, pipeline replication,
+small-scale alignment studies, teaching.
+
+**Out of scope:** production, public-facing services, automated decision-making,
+medical, legal or psychological advice, and any setting where a wrong answer has real
+cost.
+
+**Known limitations:**
 
 - **Safety recall ~75%**: ambiguously phrased requests can still get through.
 - **Over-refusal**: a small fraction of benign requests is refused.
@@ -433,11 +476,11 @@ Licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
 ```
 Menezes, B.L.S., Cardoso, C.L.S., & Porto, F.A.M. (2026). Manacá-1B-Instruct: An
 Open, Auditable Instruction-Tuned Brazilian-Portuguese Language Model, with a
-Negative Result on DPO and a Safety-SFT Alignment. Preprint. LNCC (AI Institute) ×
-NII/LLM-jp. GitHub: https://github.com/brunoleomenezes/manaca-1b-instruct ·
-License: CC BY 4.0.
+Negative Result on DPO and a Safety-SFT Alignment. Preprint, experimental research
+release v0.1. LNCC (AI Institute) × NII/LLM-jp.
+GitHub: https://github.com/brunoleomenezes/manaca-1b-instruct · License: CC BY 4.0.
 ```
 
 ---
 
-*Projeto Manacá — LNCC (Instituto de IA) × NII/LLM-jp · Manacá-1B-Instruct (alinhamento)*
+*Projeto Manacá — LNCC (Instituto de IA) × NII/LLM-jp · Manacá-1B-Instruct (alinhamento) · release de pesquisa experimental v0.1*
