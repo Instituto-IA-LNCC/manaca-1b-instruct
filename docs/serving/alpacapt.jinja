@@ -1,0 +1,11 @@
+{{- 'Abaixo está uma instrução que descreve uma tarefa. Escreva uma resposta que atenda adequadamente ao pedido.' -}}
+{%- for message in messages -%}
+{%- if message['role'] == 'user' -%}
+{{- '\n\n### Instrução:\n' + message['content'] -}}
+{%- elif message['role'] == 'assistant' -%}
+{{- '\n\n### Resposta:\n' + message['content'] + '</s>' -}}
+{%- endif -%}
+{%- endfor -%}
+{%- if add_generation_prompt -%}
+{{- '\n\n### Resposta:\n' -}}
+{%- endif -%}
