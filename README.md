@@ -12,7 +12,7 @@
 [![Status: experimental](https://img.shields.io/badge/Status-release%20de%20pesquisa%20experimental%20v0.1-orange.svg)]()
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Model: Manacá-1B-Instruct](https://img.shields.io/badge/Model-Manac%C3%A1--1B--Instruct-8A2BE2.svg)]()
-[![Base model on Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Base-menezesbruno%2Fmanaca--1b--base-yellow.svg)](https://huggingface.co/AIInstituteLNCC/manaca-1b-base)
+[![Base model on Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Base-AIInstituteLNCC%2Fmanaca--1b--base-yellow.svg)](https://huggingface.co/AIInstituteLNCC/manaca-1b-base)
 [![Base repo](https://img.shields.io/badge/Base%20repo-manaca--1b--base-002776.svg)](https://github.com/Instituto-IA-LNCC/manaca-1b-base)
 [![Alignment: safety-SFT](https://img.shields.io/badge/Alignment-safety--SFT-purple.svg)](docs/evaluation/safety-alignment-pt.md)
 [![Language: PT-BR](https://img.shields.io/badge/Language-PT--BR-009c3b.svg)]()
